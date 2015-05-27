@@ -1,0 +1,25 @@
+{
+  "name": "responsive-fixed-data-table",
+  "version": "1.0.0",
+  "author": "Viky Guerra <mvgp00@gmail.com>",
+  "description": "Responsive utility wrapper for Facebook's Fixed-Data-Table",
+  "main": "./lib/responsive-fixed-data-table.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vaiRk/responsive-fixed-data-table"
+  },
+  "bugs": {
+    "url": "https://github.com/vaiRk/responsive-fixed-data-table/issues"
+  },
+  "keywords": [
+    "responsive",
+    "fixed-data-table",
+    "fluid"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "debounce": "^1.0.0",
+    "fixed-data-table": "^0.2.0",
+    "react": "^0.13.3"
+  }
+}
