@@ -5,7 +5,7 @@ var TestUtils = React.addons.TestUtils;
 
 describe('responsive-fixed-data-table', function() {
 	var table;
-	var ResponsiveFixedDataTable = require('../../lib/responsive-fixed-data-table');
+	var ResponsiveFixedDataTable = require('../../src/responsive-fixed-data-table');
 	var container = document.createElement('div');
 	container.style.width = '500px';
 	container.style.height = '500px';

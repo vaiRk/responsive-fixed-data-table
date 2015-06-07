@@ -73,8 +73,7 @@ module.exports = function(karma) {
 		plugins: [
 			'karma-jasmine',
 			'karma-webpack',
-			'karma-chrome-launcher',
-			'karma-phantomjs-launcher'
+			'karma-chrome-launcher'
 		]
 	});
 };
