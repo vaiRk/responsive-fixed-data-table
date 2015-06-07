@@ -12,7 +12,7 @@ var ResponsiveTable = React.createClass({
   render: function() {
     return (
       <ResponsiveFixedDataTable {...tableProps}>
-        Column {...columnsProps} />
+        <Column {...columnsProps} />
       </ResponsiveFixedDataTable>
     );
   }
