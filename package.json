@@ -1,6 +1,6 @@
 {
   "name": "responsive-fixed-data-table",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Viky Guerra <mvgp00@gmail.com>",
   "description": "Responsive utility wrapper for Facebook's Fixed-Data-Table",
   "main": "./lib/responsive-fixed-data-table.js",
@@ -21,8 +21,8 @@
     "debounce": "^1.0.0"
   },
   "peerDependencies": {
-    "fixed-data-table": "^0.2.0",
-    "react": "^0.13.3"
+    "fixed-data-table": ">=0.2.0",
+    "react": ">=0.13"
   },
   "devDependencies": {
     "babel-core": "^5.5.4",
