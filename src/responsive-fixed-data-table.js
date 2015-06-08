@@ -8,9 +8,18 @@ var debounce = require('debounce');
 var ResponsiveFixedDataTable = React.createClass({
 	mixins: [ PureRenderMixin ],
 
+	propTypes: {
+		refreshRate: React.PropTypes.number
+	},
+
+	getDefaultsProps: function() {
+		return {
+			refreshRate: 250 // ms
+		};
+	},
+
 	getInitialState: function() {
 		return {
-			refreshRate: 250, // ms
 			gridWidth: 100,
 			gridHeight: 100
 		};
@@ -21,7 +30,7 @@ var ResponsiveFixedDataTable = React.createClass({
 	},
 
 	componentWillMount: function() {
-		this._setDimensionsOnState = debounce(this._setDimensionsOnState, this.state.refreshRate);
+		this._setDimensionsOnState = debounce(this._setDimensionsOnState, this.props.refreshRate);
 		this._attachResizeEvent();
 	},
 
