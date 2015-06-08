@@ -12,7 +12,7 @@ var ResponsiveFixedDataTable = React.createClass({
 		refreshRate: React.PropTypes.number
 	},
 
-	getDefaultsProps: function() {
+	getDefaultProps: function() {
 		return {
 			refreshRate: 250 // ms
 		};
