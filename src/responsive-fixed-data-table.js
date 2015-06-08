@@ -10,6 +10,7 @@ var ResponsiveFixedDataTable = React.createClass({
 
 	getInitialState: function() {
 		return {
+			refreshRate: 250, // ms
 			gridWidth: 100,
 			gridHeight: 100
 		};
@@ -20,12 +21,24 @@ var ResponsiveFixedDataTable = React.createClass({
 	},
 
 	componentWillMount: function() {
-		this._setDimensionsOnState = debounce(this._setDimensionsOnState, 250);
-		window.addEventListener('resize', this._setDimensionsOnState);
+		this._setDimensionsOnState = debounce(this._setDimensionsOnState, this.state.refreshRate);
+		this._attachResizeEvent();
 	},
 
 	componentWillUnmount: function() {
 		window.removeEventListener('resize');
+	},
+
+	_attachResizeEvent: function() {
+		var win = window;
+
+		if (win.addEventListener) {
+			win.addEventListener('resize', this._setDimensionsOnState, false);
+		} else if (win.attachEvent) {
+			win.attachEvent('resize', this._setDimensionsOnState);
+		} else {
+			win.onresize = this._setDimensionsOnState;
+		}
 	},
 
 	_setDimensionsOnState: function() {
