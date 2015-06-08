@@ -1,2 +1,4 @@
-/test
-/src
+test
+src
+example
+.module-cache
