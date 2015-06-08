@@ -50,7 +50,7 @@ module.exports = function(karma) {
 					{ 
 						exclude: /node_modules/,
 						test: /\.js$/,
-						loader: 'babel-loader'
+						loader: 'jsx-loader'
 					}
 				]
 			}
