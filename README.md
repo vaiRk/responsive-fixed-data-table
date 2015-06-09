@@ -2,6 +2,11 @@
 # responsive-fixed-data-table
 Responsive wrapper for [Facebook's Fixed-Data-Table](https://github.com/facebook/fixed-data-table) grids
 
+## Installation
+This module is available as an npm package.
+
+    npm install [--save] responsive-fixed-data-table
+
 ## Usage
 ```js
 var React = require('react');
@@ -18,7 +23,11 @@ var ResponsiveTable = React.createClass({
   }
 });
 
-
+module.exports = ResponsiveTable;
 ```
 
-Width and height of your table will be overriden to take all the available space of its parent container.
+All passed props will be passed to the underlying FixedDataTable component. Please check [FixedDataTable docs](http://facebook.github.io/fixed-data-table/api-table.html) for a list of available options.  
+Width and height will be overriden to take all the available space of its parent container.
+
+### Additional configuration
+**refreshRate** *{Number}*: Time in milliseconds to debounce the resize handler.
