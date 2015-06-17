@@ -20,8 +20,8 @@ var ResponsiveFixedDataTable = React.createClass({
 
 	getInitialState: function() {
 		return {
-			gridWidth: 100,
-			gridHeight: 100
+			gridWidth: 1,
+			gridHeight: 1
 		};
 	},
 

@@ -34,7 +34,7 @@
     "karma-jasmine": "^0.3.5",
     "karma-webpack": "^1.5.1",
     "react-tools": "^0.13.3",
-    "webpack": "^1.9.10"
+    "webpack": "^1.9.11"
   },
   "scripts": {
     "prebuild": "rm -rf lib",
