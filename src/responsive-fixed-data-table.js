@@ -35,7 +35,7 @@ var ResponsiveFixedDataTable = React.createClass({
 	},
 
 	componentWillUnmount: function() {
-		window.removeEventListener('resize');
+		window.removeEventListener('resize', this._setDimensionsOnState);
 	},
 
 	_attachResizeEvent: function() {
