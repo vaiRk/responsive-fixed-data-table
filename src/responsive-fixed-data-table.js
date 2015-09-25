@@ -27,11 +27,11 @@ var ResponsiveFixedDataTable = React.createClass({
 
 	componentDidMount: function() {
 		this._setDimensionsOnState();
+		this._attachResizeEvent();
 	},
 
 	componentWillMount: function() {
 		this._setDimensionsOnState = debounce(this._setDimensionsOnState, this.props.refreshRate);
-		this._attachResizeEvent();
 	},
 
 	componentWillUnmount: function() {
