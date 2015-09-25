@@ -4,16 +4,19 @@ var React = require('react/addons');
 var PureRenderMixin = React.addons.PureRenderMixin;
 var Table = require('fixed-data-table').Table;
 var debounce = require('debounce');
+var assign = require('react/lib/Object.assign');
 
 var ResponsiveFixedDataTable = React.createClass({
 	mixins: [ PureRenderMixin ],
 
 	propTypes: {
+		containerStyle: React.PropTypes.object,
 		refreshRate: React.PropTypes.number
 	},
 
 	getDefaultProps: function() {
 		return {
+			containerStyle: {},
 			refreshRate: 250 // ms
 		};
 	},
@@ -60,14 +63,19 @@ var ResponsiveFixedDataTable = React.createClass({
 		}
 	},
 
+	_getStyle: function() {
+		return assign(this.props.containerStyle, {
+			width: '100%',
+			height: '100%'
+		});
+	},
+
 	/**
 	 * @return {ReactDOMNode}
 	 */
 	render: function() {
-		var wrapperStyle = { width: '100%', height: '100%' };
-
 		return (
-			<div style={wrapperStyle}>
+			<div style={this._getStyle()}>
 				<Table {...this.props} ref='table' width={this.state.gridWidth} height={this.state.gridHeight} />
 			</div>
 		);
