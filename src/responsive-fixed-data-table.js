@@ -10,11 +10,13 @@ var ResponsiveFixedDataTable = React.createClass({
 	mixins: [ PureRenderMixin ],
 
 	propTypes: {
+		containerStyle: React.PropTypes.object,
 		refreshRate: React.PropTypes.number
 	},
 
 	getDefaultProps: function() {
 		return {
+			containerStyle: {},
 			refreshRate: 250 // ms
 		};
 	},
@@ -62,7 +64,7 @@ var ResponsiveFixedDataTable = React.createClass({
 	},
 
 	_getStyle: function() {
-		return assign(this.props.style || {}, {
+		return assign(this.props.containerStyle, {
 			width: '100%',
 			height: '100%'
 		});

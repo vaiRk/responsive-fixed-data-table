@@ -13,6 +13,7 @@ describe('responsive-fixed-data-table', function() {
 	beforeEach(function() {
 		var props = {
 			foo: 'bar',
+			containerStyle: { width: '20%', position: 'absolute' },
 			rowGetter: function() {},
 			rowHeight: 1,
 			rowsCount: 1,
@@ -31,6 +32,11 @@ describe('responsive-fixed-data-table', function() {
 		var tableNode = table.getDOMNode();
 		expect(tableNode.style.width).toBe('100%');
 		expect(tableNode.style.height).toBe('100%');
+	});
+
+	it('should accept additional styles', function() {
+		var tableNode = table.getDOMNode();
+		expect(tableNode.style.position).toBe('absolute');
 	});
 
 	it('should transfer props and add width and height', function() {
