@@ -1,6 +1,6 @@
 {
   "name": "responsive-fixed-data-table",
-  "version": "1.4.3",
+  "version": "1.5.0",
   "author": "Viky Guerra <mvgp00@gmail.com>",
   "description": "Responsive utility wrapper for Facebook's Fixed-Data-Table",
   "main": "./lib/responsive-fixed-data-table.js",
