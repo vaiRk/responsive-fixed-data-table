@@ -30,5 +30,5 @@ All passed props will be passed to the underlying FixedDataTable component. Plea
 Width and height will be overriden to take all the available space of its parent container.
 
 ### Additional configuration
-**containerStyle** *{Object}*: Additional styles to be set on the container div.
+**containerStyle** *{Object}*: Additional styles to be set on the container div.  
 **refreshRate** *{Number}*: Time in milliseconds to debounce the resize handler.
