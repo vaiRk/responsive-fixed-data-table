@@ -37,21 +37,21 @@
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-<div class="highlight highlight-js"><pre><span class="pl-k">var</span> React <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>react<span class="pl-pds">'</span></span>);
-<span class="pl-k">var</span> Column <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>fixed-data-table<span class="pl-pds">'</span></span>).<span class="pl-c1">Column</span>;
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> React <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>react<span class="pl-pds">'</span></span>);
+<span class="pl-k">var</span> Column <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>fixed-data-table<span class="pl-pds">'</span></span>).Column;
 <span class="pl-k">var</span> ResponsiveFixedDataTable <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>responsive-fixed-data-table<span class="pl-pds">'</span></span>);
 
-<span class="pl-k">var</span> ResponsiveTable <span class="pl-k">=</span> React.<span class="pl-c1">createClass</span>({
+<span class="pl-k">var</span> ResponsiveTable <span class="pl-k">=</span> React.createClass({
   <span class="pl-en">render</span><span class="pl-k">:</span> <span class="pl-k">function</span>() {
     <span class="pl-k">return</span> (
-      <span class="pl-k">&lt;</span>ResponsiveFixedDataTable {...<span class="pl-c1">tableProps</span>}<span class="pl-k">&gt;</span>
-        <span class="pl-k">&lt;</span>Column {...<span class="pl-c1">columnsProps</span>} /<span class="pl-k">&gt;</span>
-      <span class="pl-k">&lt;</span>/ResponsiveFixedDataTable<span class="pl-k">&gt;</span>
+      <span class="pl-k">&lt;</span>ResponsiveFixedDataTable {...tableProps}<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>Column {...columnsProps} <span class="pl-k">/&gt;</span>
+      <span class="pl-k">&lt;/</span>ResponsiveFixedDataTable<span class="pl-k">&gt;</span>
     );
   }
 });
 
-<span class="pl-c1">module</span>.<span class="pl-c1">exports</span> <span class="pl-k">=</span> ResponsiveTable;</pre></div>
+<span class="pl-c1">module</span>.exports <span class="pl-k">=</span> ResponsiveTable;</pre></div>
 
 <p>All passed props will be passed to the underlying FixedDataTable component. Please check <a href="http://facebook.github.io/fixed-data-table/api-table.html">FixedDataTable docs</a> for a list of available options.<br>
 Width and height will be overriden to take all the available space of its parent container.</p>
@@ -59,7 +59,8 @@ Width and height will be overriden to take all the available space of its parent
 <h3>
 <a id="additional-configuration" class="anchor" href="#additional-configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Additional configuration</h3>
 
-<p><strong>refreshRate</strong> <em>{Number}</em>: Time in milliseconds to debounce the resize handler.</p>
+<p><strong>containerStyle</strong> <em>{Object}</em>: Additional styles to be set on the container div.<br>
+<strong>refreshRate</strong> <em>{Number}</em>: Time in milliseconds to debounce the resize handler.</p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/vaiRk/responsive-fixed-data-table">ResponsiveFixedDataTable</a> is maintained by <a href="https://github.com/vaiRk">vaiRk</a>.</span>
