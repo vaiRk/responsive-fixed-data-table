@@ -1,6 +1,6 @@
 {
   "name": "responsive-fixed-data-table",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "author": "Viky Guerra <mvgp00@gmail.com>",
   "description": "Responsive utility wrapper for Facebook's Fixed-Data-Table",
   "main": "./lib/responsive-fixed-data-table.js",
@@ -24,14 +24,15 @@
     "lodash": "^4.3.0"
   },
   "peerDependencies": {
-    "fixed-data-table": ">=0.2.0",
+    "fixed-data-table": ">=0.6.0",
     "react": ">=0.14",
     "react-dom": ">=0.14"
   },
   "devDependencies": {
-    "fixed-data-table": ">=0.2.0",
-    "react": ">=0.14",
-    "react-dom": ">=0.14",
+    "fixed-data-table": "^0.6.0",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-addons-test-utils": "^0.14.7",
     "babel-core": "^6.5.2",
     "babel-loader": "^6.2.2",
     "babel-plugin-add-module-exports": "^0.1.2",
@@ -50,7 +51,7 @@
   },
   "scripts": {
     "prebuild": "rimraf lib",
-    "build": "cross-env BABEL_ENV=commonjs webpack",
+    "build": "cross-env BABEL_ENV=umd webpack",
     "prepublish": "npm run build",
     "test": "./node_modules/karma/bin/karma start test/karma.conf.js",
     "test:debug": "./node_modules/karma/bin/karma start test/karma.conf.js --no-single-run --auto-watch --log-level debug"

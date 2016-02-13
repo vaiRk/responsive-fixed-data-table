@@ -28,7 +28,7 @@
     "fixed-data-table": "^0.6.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
-    "responsive-fixed-data-table": "../../responsive-fixed-data-table"
+    "responsive-fixed-data-table": "^2.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.5.2",
