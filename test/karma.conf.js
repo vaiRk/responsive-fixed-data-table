@@ -1,5 +1,7 @@
 'use strict';
 
+var webpackConfig = require('../webpack.config.js');
+
 module.exports = function(karma) {
 	karma.set({
 
@@ -22,7 +24,7 @@ module.exports = function(karma) {
 
 		// Preprocess matching files before serving them to the browser.
 		preprocessors: {
-			'test/specs/*.js': [ 'webpack' ]
+			'test/specs/*.js': [ 'webpack', 'sourcemap' ]
 		},
 
 		// Start this browsers
@@ -45,15 +47,9 @@ module.exports = function(karma) {
 		port: 9876,
 
 		webpack: {
-			module: {
-				loaders: [
-					{ 
-						exclude: /node_modules/,
-						test: /\.js$/,
-						loader: 'jsx-loader'
-					}
-				]
-			}
+			devtool: 'cheap-eval-source-map',
+			module: webpackConfig.module,
+			resolve: webpackConfig.resolve
 		},
 
 		// Prevent webpack from logging stuff to the console.
@@ -73,6 +69,7 @@ module.exports = function(karma) {
 		plugins: [
 			'karma-jasmine',
 			'karma-webpack',
+			'karma-sourcemap-loader',
 			'karma-chrome-launcher'
 		]
 	});

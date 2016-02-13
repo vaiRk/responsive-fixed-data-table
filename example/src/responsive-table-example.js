@@ -1,30 +1,43 @@
-'use-strict';
+'use strict';
 
-var React = require('react');
-var FixedDataTable = require('fixed-data-table');
-var ResponsiveFixedDataTable = require('responsive-fixed-data-table');
+import React from 'react';
+import { render } from 'react-dom';
+import { Column, Cell } from 'fixed-data-table';
+import ResponsiveFixedDataTable from 'responsive-fixed-data-table';
 
-var Column = FixedDataTable.Column;
-
-var data = [
-	['a1', 'b1', 'c1'],
-	['a2', 'b3', 'c2'],
-	['a3', 'b3', 'c3']
+const data = [
+	{ name: 'Olivia Dunham', email: 'odunham@fbi.gov' },
+	{ name: 'Walter Bishop', email: 'drbishop@harvard.edu' },
+	{ name: 'Peter Bishop', email: 'peterbishop@fbi.gov' },
+	{ name: 'Astrid Farnsworth', email: 'afarnsworth@fbi.gov' }
 ];
 
-function rowGetter(rowIndex) {
-  return data[rowIndex];
+class MyCell extends React.Component {
+	render() {
+		const { rowIndex, data, field, ...props } = this.props;
+		return (
+			<Cell {...props}>
+				{data[rowIndex][field]}
+			</Cell>
+		);
+	}
 }
 
-React.render(
+render(
 	<ResponsiveFixedDataTable
-		rowHeight={40}
-		rowGetter={rowGetter}
-		rowsCount={data.length}
-		width={500}
-		height={200}
-		headerHeight={60} >
-		<Column label='Col 1' width={100} dataKey={0} />
-		<Column label="Col 2" width={400} dataKey={1} flexGrow={1} />
-	</ResponsiveFixedDataTable>
-, document.body);
+	rowHeight={40}
+	rowsCount={data.length}
+	width={500}
+	height={200}
+	headerHeight={60} >
+	<Column
+		header={<Cell>Name</Cell>}
+		cell={<MyCell data={data} field='name' />}
+		width={200} />
+	<Column
+		header={<Cell>Email</Cell>}
+		cell={<MyCell data={data} field='email' />}
+		width={400}
+		flexGrow={1} />
+</ResponsiveFixedDataTable>
+, document.getElementById('example-container'));

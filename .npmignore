@@ -1,4 +1,6 @@
 test
 src
 example
+webpack.config.js
+.babelrc
 .module-cache

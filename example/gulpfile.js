@@ -3,10 +3,6 @@
 var gulp           = require('gulp'),
 	rimraf         = require('rimraf'),
 	runSequence    = require('run-sequence'),
-	source         = require('vinyl-source-stream'),
-	buffer         = require('vinyl-buffer'),
-	browserify     = require('browserify'),
-	reactify       = require('reactify'),
 	modRewrite     = require('connect-modrewrite'),
 	connect        = require('gulp-connect');
 
@@ -24,33 +20,11 @@ var buildPaths = {
 	css: 		'./build/assets/css/'
 };
 
-// BUNDLER
-// - - - - - - - - - - - - - - -
-var bundler = browserify({
-	entries: [paths.mainJs], // Only need initial file, browserify finds the deps
-	transform: [
-		reactify // We want to convert JSX to normal javascript
-	],
-	debug: true, // Gives us sourcemapping
-	cache: {},
-	packageCache: {},
-	fullPaths: true
-});
-
 // TASKS
 // - - - - - - - - - - - - - - -
 // Cleans the build directory.
 gulp.task('clean', function(cb) {
 	rimraf(buildPaths.main, cb);
-});
-
-// Bundle files and minify for prod.
-gulp.task('bundle', function() {
-	return bundler
-		.bundle()
-		.pipe(source('bundle.js'))
-		.pipe(buffer())
-		.pipe(gulp.dest(buildPaths.js));
 });
 
 // Copies html file
@@ -65,6 +39,7 @@ gulp.task('copy-html-css', function() {
 gulp.task('server:start', function() {
 	return connect.server({
 		root: './build',
+		port: 8000,
 		middleware: function() {
 			return [
 				modRewrite(['^[^\\.]*$ /index.html [L]'])
@@ -75,7 +50,7 @@ gulp.task('server:start', function() {
 
 // Builds the app prod ready.
 gulp.task('build', function() {
-	runSequence('clean', ['bundle'], 'copy-html-css', function() {
+	runSequence('clean', 'copy-html-css', function() {
 		console.log('Successfully built.');
 	});
 });
