@@ -1,5 +1,7 @@
 'use strict';
 
+var webpackConfig = require('../webpack.config.js');
+
 module.exports = function(karma) {
 	karma.set({
 
@@ -45,15 +47,8 @@ module.exports = function(karma) {
 		port: 9876,
 
 		webpack: {
-			module: {
-				loaders: [
-					{ 
-						exclude: /node_modules/,
-						test: /\.js$/,
-						loader: 'jsx-loader'
-					}
-				]
-			}
+			module: webpackConfig.module,
+			resolve: webpackConfig.resolve
 		},
 
 		// Prevent webpack from logging stuff to the console.
