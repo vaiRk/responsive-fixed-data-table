@@ -32,16 +32,18 @@ export default class ResponsiveFixedDataTable extends React.Component {
 	}
 
 	componentDidMount() {
+		this.__isMounted = true;
 		this._setDimensionsOnState();
 		this._attachResizeEvent();
 	}
 
 	componentWillMount() {
 		const { refreshRate } = this.props;
-		this._setDimensionsOnState = debounce(this._setDimensionsOnState.bind(this), refreshRate);
+		this._setDimensionsOnState = debounce(this._setDimensionsOnState, refreshRate);
 	}
 
 	componentWillUnmount() {
+		this.__isMounted = false;
 		window.removeEventListener('resize', this._setDimensionsOnState);
 	}
 
@@ -55,13 +57,15 @@ export default class ResponsiveFixedDataTable extends React.Component {
 		}
 	}
 
-	_setDimensionsOnState() {
-		const { offsetWidth, offsetHeight } = findDOMNode(this);
+	_setDimensionsOnState = () => {
+		if (this.__isMounted) {
+			const { offsetWidth, offsetHeight } = findDOMNode(this);
 
-		this.setState({
-			gridWidth: offsetWidth,
-			gridHeight: offsetHeight
-		});
+			this.setState({
+				gridWidth: offsetWidth,
+				gridHeight: offsetHeight
+			});
+		}
 	}
 
 	_getStyle() {

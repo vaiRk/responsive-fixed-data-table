@@ -39,18 +39,18 @@ describe('responsive-fixed-data-table', function() {
 		expect(tableNode.style.position).toBe('absolute');
 	});
 
-	xit('should not update', function() {
+	it('should not update', function() {
 		const newProps = { ...table.props };
-		expect(table.shouldComponentUpdate(newProps)).toBe(false);
 		const newState = { ...table.state };
 		expect(table.shouldComponentUpdate(newProps, newState)).toBe(false);
 	});
 
-	xit('should update', function() {
-		const newProps = { headerHeight: 100, ...table.props };
-		expect(table.shouldComponentUpdate(newProps)).toBe(true);
-		const newState = { gridWidth: 100, ...table.state };
+	it('should update', function() {
+		const newProps = { ...table.props, headerHeight: 100 };
+		const newState = { ...table.state, gridWidth: 100 };
 		expect(table.shouldComponentUpdate(newProps, newState)).toBe(true);
+		expect(table.shouldComponentUpdate(newProps, { ...table.state })).toBe(true);
+		expect(table.shouldComponentUpdate({ ...table.props }, newState)).toBe(true);
 	});
 
 	it('should transfer props and add width and height', function() {

@@ -24,7 +24,7 @@ module.exports = function(karma) {
 
 		// Preprocess matching files before serving them to the browser.
 		preprocessors: {
-			'test/specs/*.js': [ 'webpack' ]
+			'test/specs/*.js': [ 'webpack', 'sourcemap' ]
 		},
 
 		// Start this browsers
@@ -47,6 +47,7 @@ module.exports = function(karma) {
 		port: 9876,
 
 		webpack: {
+			devtool: 'cheap-eval-source-map',
 			module: webpackConfig.module,
 			resolve: webpackConfig.resolve
 		},
@@ -68,6 +69,7 @@ module.exports = function(karma) {
 		plugins: [
 			'karma-jasmine',
 			'karma-webpack',
+			'karma-sourcemap-loader',
 			'karma-chrome-launcher'
 		]
 	});
