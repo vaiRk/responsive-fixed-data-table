@@ -3,17 +3,35 @@
 var webpack = require('webpack');
 var path = require('path');
 
+var minify = process.env.NODE_ENV === 'production';
+var plugins = [
+	new webpack.optimize.OccurenceOrderPlugin()
+];
+
+if (minify) {
+	plugins.push(
+		new webpack.optimize.UglifyJsPlugin({
+			comments: false,
+			compress: {
+				warnings: false,
+				screw_ie8: true,
+				dead_code: true,
+				drop_debugger: true,
+				drop_console: true
+			}
+		})
+	);
+}
+
 module.exports = {
 	context: __dirname,
 	entry: path.resolve(__dirname, 'src', 'responsive-fixed-data-table.js'),
 	output: {
 		path: path.resolve(__dirname, 'lib'),
-		filename: 'responsive-fixed-data-table.js',
-		sourceMapFileName: '[file].map',
+		filename: 'responsive-fixed-data-table' + (minify ? '.min.js' : '.js'),
 		library: 'ResponsiveFixedDataTable',
 		libraryTarget: 'umd'
 	},
-	devtool: 'source-map',
 	externals: {
 		react: {
 			root: 'React',
@@ -42,20 +60,5 @@ module.exports = {
 			{ test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel' }
 		]
 	},
-	plugins: [
-		new webpack.optimize.OccurenceOrderPlugin(),
-		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': JSON.stringify('production')
-		}),
-		new webpack.optimize.UglifyJsPlugin({
-			comments: false,
-			compress: {
-				warnings: false,
-				screw_ie8: true,
-				dead_code: true,
-				drop_debugger: true,
-				drop_console: true
-			}
-		})
-	]
+	plugins: plugins
 }
