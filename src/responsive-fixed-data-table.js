@@ -62,8 +62,8 @@ export default class ResponsiveFixedDataTable extends React.Component {
 			const { offsetWidth, offsetHeight } = findDOMNode(this);
 
 			this.setState({
-				gridWidth: offsetWidth,
-				gridHeight: offsetHeight
+				gridWidth: offsetWidth || 1,
+				gridHeight: offsetHeight || 1
 			});
 		}
 	}
