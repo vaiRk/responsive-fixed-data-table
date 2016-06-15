@@ -7,6 +7,8 @@ import debounce from 'lodash/debounce';
 import assign from 'lodash/assign';
 import isEqual from 'lodash/isEqual';
 
+const initialPixels = 1;
+
 export default class ResponsiveFixedDataTable extends React.Component {
 	constructor(props, context) {
 		super(props, context);
@@ -23,8 +25,8 @@ export default class ResponsiveFixedDataTable extends React.Component {
 	};
 
 	state = {
-		gridWidth: 1,
-		gridHeight: 1
+		gridWidth: initialPixels,
+		gridHeight: initialPixels
 	};
 
 	shouldComponentUpdate(nextProps, nextState) {
@@ -62,8 +64,8 @@ export default class ResponsiveFixedDataTable extends React.Component {
 			const { offsetWidth, offsetHeight } = findDOMNode(this);
 
 			this.setState({
-				gridWidth: offsetWidth || 1,
-				gridHeight: offsetHeight || 1
+				gridWidth: offsetWidth || initialPixels,
+				gridHeight: offsetHeight || initialPixels
 			});
 		}
 	}
