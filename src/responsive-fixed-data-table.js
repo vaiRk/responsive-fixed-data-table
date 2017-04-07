@@ -25,7 +25,6 @@ export default class ResponsiveFixedDataTable extends React.Component {
 	};
 
 	state = {
-		gridWidth: initialPixels,
 		gridHeight: initialPixels
 	};
 
@@ -61,10 +60,9 @@ export default class ResponsiveFixedDataTable extends React.Component {
 
 	_setDimensionsOnState = () => {
 		if (this.__isMounted) {
-			const { offsetWidth, offsetHeight } = findDOMNode(this);
+			const { offsetHeight } = findDOMNode(this);
 
 			this.setState({
-				gridWidth: offsetWidth || initialPixels,
 				gridHeight: offsetHeight || initialPixels
 			});
 		}
@@ -79,11 +77,11 @@ export default class ResponsiveFixedDataTable extends React.Component {
 	}
 
 	render() {
-		const { gridWidth, gridHeight } = this.state;
+		const { gridHeight } = this.state;
 
 		return (
 			<div style={this._getStyle()}>
-				<Table ref='table' {...this.props} width={gridWidth} height={gridHeight} />
+				<Table ref='table' {...this.props} height={gridHeight} />
 			</div>
 		);
 	}
